@@ -1,0 +1,54 @@
+{
+  "name": "novel-ai-writer",
+  "version": "2.0.0",
+  "description": "AI-powered novel writing assistant with agent-based consistency check",
+  "main": "main.js",
+  "author": "Your Name",
+  "private": true,
+  "scripts": {
+    "watch": "webpack --watch --mode development",
+    "start": "electron .",
+    "build": "webpack --mode production",
+    "dist": "npm run build && electron-builder",
+    "dev": "concurrently \"npm run watch\" \"npm start\""
+  },
+  "build": {
+    "appId": "com.yourcompany.novel-ai-writer",
+    "productName": "Novel AI Writer",
+    "directories": {
+      "output": "dist_electron"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json",
+      "dist/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "@babel/preset-react": "^7.23.3",
+    "babel-loader": "^9.1.3",
+    "concurrently": "^8.2.2",
+    "css-loader": "^6.8.1",
+    "electron": "^27.1.3",
+    "electron-builder": "^24.9.1",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.0"
+  }
+}
